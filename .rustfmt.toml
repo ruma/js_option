@@ -1,0 +1,8 @@
+use_small_heuristics = "Max"
+
+# These settings are no-ops on stable.
+# To run them, use `cargo +nightly fmt`.
+comment_width = 80
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+wrap_comments = true
