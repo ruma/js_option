@@ -2,6 +2,7 @@
 name = "js_option"
 version = "0.1.0"
 authors = ["Jonas Platte <jonas@lumeo.com>"]
+license = "MIT"
 edition = "2018"
 resolver = "2"
 
