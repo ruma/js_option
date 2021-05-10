@@ -28,6 +28,8 @@
 
 #![warn(missing_docs)]
 
+use std::ops::{Deref, DerefMut};
+
 #[cfg(feature = "serde")]
 mod serde;
 
@@ -138,12 +140,44 @@ impl<T> JsOption<T> {
             Self::Undefined => JsOption::Undefined,
         }
     }
+
+    /// Converts from `&Option<T>` to `Option<&T>`.
+    pub const fn as_ref(&self) -> JsOption<&T> {
+        match self {
+            Self::Some(x) => JsOption::Some(x),
+            Self::Null => JsOption::Null,
+            Self::Undefined => JsOption::Undefined,
+        }
+    }
+
+    /// Converts from `&mut Option<T>` to `Option<&mut T>`.
+    pub fn as_mut(&mut self) -> JsOption<&mut T> {
+        match self {
+            Self::Some(x) => JsOption::Some(x),
+            Self::Null => JsOption::Null,
+            Self::Undefined => JsOption::Undefined,
+        }
+    }
 }
 
 impl<T: Default> JsOption<T> {
     /// Returns the contained `Some` value or a default.
     pub fn unwrap_or_default(self) -> T {
         self.unwrap_or_else(Default::default)
+    }
+}
+
+impl<T: Deref> JsOption<T> {
+    /// Converts from `&JsOption<T>` to `JsOption<&T::Target>`.
+    pub fn as_deref(&self) -> JsOption<&<T as Deref>::Target> {
+        self.as_ref().map(|val| val.deref())
+    }
+}
+
+impl<T: DerefMut> JsOption<T> {
+    /// Converts from `&mut JsOption<T>` to `JsOption<&mut T::Target>`.
+    pub fn as_deref_mut(&mut self) -> JsOption<&mut <T as Deref>::Target> {
+        self.as_mut().map(|val| val.deref_mut())
     }
 }
 
