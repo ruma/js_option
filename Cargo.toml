@@ -1,10 +1,13 @@
 [package]
 name = "js_option"
 version = "0.1.0"
+description = "An Option-like type with separate null and undefined variants"
+readme = "README.md"
 authors = ["Jonas Platte <jonas@lumeo.com>"]
 license = "MIT"
 edition = "2018"
 resolver = "2"
+include = ["src/**/*", "LICENSE-MIT", "README.md"]
 
 [features]
 default = ["serde"]
