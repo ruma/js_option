@@ -7,7 +7,7 @@ authors = ["Jonas Platte <jonas@lumeo.com>"]
 license = "MIT"
 edition = "2018"
 resolver = "2"
-include = ["src/**/*", "LICENSE-MIT", "README.md"]
+include = ["src/**/*", "LICENSE", "README.md"]
 
 [features]
 default = ["serde"]
