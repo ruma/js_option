@@ -15,7 +15,7 @@ a missing field will make deserialization fail unless there is a
 `#[serde(skip)]`, `#[serde(skip_deserializing)]` or `#[serde(default)]`
 attribute).
 
-# Example:
+## Example:
 
 ```
 # extern crate serde_crate as serde;
@@ -27,3 +27,7 @@ struct MyStruct {
     my_field: JsOption<String>,
 }
 ```
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
