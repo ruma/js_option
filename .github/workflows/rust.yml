@@ -8,31 +8,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions-rs/toolchain@v1
+    - uses: actions/checkout@v5
+    - uses: dtolnay/rust-toolchain@stable
       with:
-        toolchain: stable
-        default: true
-        profile: minimal
         components: rustfmt, clippy
     - name: Build
-      uses: actions-rs/cargo@v1
-      with:
-        command: build
+      run: cargo build
     - name: Run tests
-      uses: actions-rs/cargo@v1
-      with:
-        command: test
+      run: cargo test
     - name: Check formatting
-      uses: actions-rs/cargo@v1
-      with:
-        command: fmt
-        args: -- --check
+      run: cargo fmt -- --check
     - name: Catch common mistakes
-      uses: actions-rs/cargo@v1
-      with:
-        command: clippy
-        args: --all-targets -- -D warnings
+      run: cargo clippy --all-targets -- -D warnings
