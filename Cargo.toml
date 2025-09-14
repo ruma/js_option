@@ -5,17 +5,18 @@ description = "An Option-like type with separate null and undefined variants"
 readme = "README.md"
 repository = "https://github.com/ruma/js_option"
 license = "MIT"
-edition = "2018"
+edition = "2021"
+rust-version = "1.60.0"
 resolver = "2"
 include = ["src/**/*", "LICENSE", "README.md"]
 
 [features]
 default = ["serde"]
-serde = ["serde_crate"]
+serde = ["dep:serde_core"]
 
 [dependencies]
-serde_crate = { package = "serde", version = "1.0.125", optional = true }
+serde_core = { version = "1.0.221", optional = true }
 
 [dev-dependencies]
-serde_crate = { package = "serde", version = "1.0.125", features = ["derive"] }
+serde = { version = "1.0.221", features = ["derive"] }
 serde_json = "1.0.64"

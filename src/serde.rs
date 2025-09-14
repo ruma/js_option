@@ -1,7 +1,4 @@
-// Undo rename from Cargo.toml
-extern crate serde_crate as serde;
-
-use serde::{
+use serde_core::{
     de::{Deserialize, Deserializer},
     ser::{Error as _, Serialize, Serializer},
 };

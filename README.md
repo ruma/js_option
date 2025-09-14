@@ -18,7 +18,6 @@ attribute).
 ## Example:
 
 ```
-# extern crate serde_crate as serde;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]

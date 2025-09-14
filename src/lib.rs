@@ -16,12 +16,10 @@
 //! # Example:
 //!
 //! ```
-//! # extern crate serde_crate as serde;
 //! use js_option::JsOption;
 //! use serde::{Deserialize, Serialize};
 //!
 //! #[derive(Serialize, Deserialize)]
-//! # #[serde(crate = "serde")]
 //! struct MyStruct {
 //!     #[serde(default, skip_serializing_if = "JsOption::is_undefined")]
 //!     my_field: JsOption<String>,
